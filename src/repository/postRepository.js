@@ -5,12 +5,12 @@ class PostRepository {
         this.model = Post;
     }
 
-    async create(post) {
+    async create(post,UserId) {
         return await this.model.create({
             title:post.title,
             content:post.content,
             image:post.image,
-            UserId:post.UserId
+            userId:UserId
         });
     }
 }

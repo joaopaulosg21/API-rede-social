@@ -1,5 +1,7 @@
 const userRepository = require("../repository/userRepository");
 const validate = require("../utils/validate");
+const jwt = require("jsonwebtoken");
+const secret = require("../config").secret;
 class UserService {
     constructor() {
         this.repository = new userRepository();
@@ -20,7 +22,8 @@ class UserService {
             await validate(body,"email","password");
             const user = await this.repository.login(body.email,body.password);
             if(user) {
-                return {status:200,msg:"Login bem sucedido"};
+                const token = jwt.sign({"id":user.id},secret);
+                return {status:200,msg:token};
             }else{
                 return {status:404,msg:"Incorrect email or password"}
             }
