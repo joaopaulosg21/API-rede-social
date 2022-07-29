@@ -15,11 +15,15 @@ class UserService {
         }
     }
 
-    async login(email,password) {
+    async login(body) {
         try{
-            await validate({email:email,password:password},"email","password");
-            const user = await this.repository.login(email,password);
-            return {status:200,msg:"Login bem sucedido"};
+            await validate(body,"email","password");
+            const user = await this.repository.login(body.email,body.password);
+            if(user) {
+                return {status:200,msg:"Login bem sucedido"};
+            }else{
+                return {status:404,msg:"Incorrect email or password"}
+            }
         }catch(error){
             return {status:500,msg:error};
         }

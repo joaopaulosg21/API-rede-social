@@ -20,7 +20,7 @@ function routes(req,res) {
     if(method == "POST" && path == "login") {
         req.on("data",async(data)=>{
             const body = JSON.parse(data.toString());
-            const serviceResponse = await service.login(body.email,body.password);
+            const serviceResponse = await service.login(body);
             return response(serviceResponse.status,serviceResponse.msg);
         })
     }

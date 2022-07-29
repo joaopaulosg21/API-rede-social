@@ -7,8 +7,8 @@ const Post = sequelize.define("Posts",{
     content:dataTypes.TEXT,
     image:dataTypes.STRING
 });
-
+/* 
 User.hasMany(Post);
-Post.sync();
+Post.sync(); */
 
 module.exports = Post;

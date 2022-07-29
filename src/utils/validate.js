@@ -1,8 +1,8 @@
-function validate(user,...values) {
+function validate(obj,...values) {
     const keys = values;
     const response = new Promise((resolve,reject) => {
         for(let key of keys) {
-            if(user.hasOwnProperty(key) == false) {
+            if(obj.hasOwnProperty(key) == false) {
                 reject({message:`Must have all fields`,missing:key});
             }
         }
