@@ -10,3 +10,5 @@ const Post = sequelize.define("Posts",{
 
 User.hasMany(Post);
 Post.sync();
+
+module.exports = Post;

@@ -12,6 +12,10 @@ class UserRepository {
             birthday:user.birthday
         });
     }
+
+    async login(email,password){
+        return await this.model.findOne({where:{email:email,password:password}});
+    }
 }
 
 module.exports = UserRepository;
